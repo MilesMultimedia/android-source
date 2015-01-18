@@ -25,11 +25,15 @@ public class FavoritePastries {
 	 *	between rating and pastry: HashMap<Integer, List<Pastry>>
 	/************************************************/
 
+    HashMap<Pastry, Integer> mPastryMap;
 
-	public FavoritePastries() {
+    public FavoritePastries() {
 		/************************************************
  	 	 *	WORK HERE
 		/************************************************/
+        
+        mPastryMap = new HashMap<Pastry, Integer>();
+
 	}
 
 	/* 
@@ -50,7 +54,14 @@ public class FavoritePastries {
 	public void addPastry(Pastry pastry, int rating) {
 		/************************************************
  	 	 *	WORK HERE
-		/************************************************/
+		/************************************************/      
+
+        if (mPastryMap.containsKey(pastry)) {
+            mPastryMap.remove(pastry);
+        }
+
+        mPastryMap.put(pastry, rating);
+        
 	}
 
 	/* 
@@ -69,6 +80,12 @@ public class FavoritePastries {
 		/************************************************
  	 	 *	WORK HERE, you must modify the return value
 		/************************************************/
+        
+        if (mPastryMap.get(pastry) != null) {
+            mPastryMap.remove(pastry);
+            return true;
+        }
+        
 		return false;
 	}
 
@@ -90,7 +107,21 @@ public class FavoritePastries {
 		/************************************************
  	 	 *	WORK HERE, you must modify the return value
 		/************************************************/
-		return -1;
+
+        int rating = -1;
+               
+        Iterator<Pastry> keyPastryIterator = mPastryMap.keySet().iterator();
+
+        while(keyPastryIterator.hasNext()){
+            Pastry key = keyPastryIterator.next();
+            rating = mPastryMap.get(key);
+
+            // System.out.println(pastry.toString());
+            // System.out.println("key: " + key + " value: " + mPastryMap.get(key));
+        }
+       
+        return rating;
+
 	}
 
 	/* 
@@ -113,7 +144,19 @@ public class FavoritePastries {
 		/************************************************
  	 	 *	WORK HERE, you must modify the return value
 		/************************************************/
-		return null;
+
+        Collection collection = new HashSet();
+
+        Iterator<Pastry> keyPastryIterator = mPastryMap.keySet().iterator();
+
+        while(keyPastryIterator.hasNext()) {
+            Pastry key = keyPastryIterator.next();
+            if (rating == mPastryMap.get(key)) {
+                collection.add(mPastryMap);
+            }
+        }
+                
+		return collection;
 	}
 
 }

@@ -4,11 +4,13 @@ package com.bloc.collections;
  *	YOU MAY NOT MODIFY THIS FILE
 /************************************************/
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Random;
 
 public class Main extends Object {
 
 	public static void main(String [] args) {
+
 		try {
 			Pastry[] pastries = new Pastry[8];
 			// Let's get some pastries going
@@ -85,7 +87,8 @@ public class Main extends Object {
 				assert pastryCounts[i] > 0 : "Pastry(" + pastries[i] + ") absent from Collection returned by getPastriesForRating";
 				assert pastryCounts[i] == 1 : "Pastry(" + pastries[i] + ") had duplicate entries in Collections returned by getPastriesForRating";
 			}
-		} catch (Exception e) {
+
+        } catch (Exception e) {
 			System.out.println("Something went wrong with this pastry collection\n");
 			e.printStackTrace();
 			System.exit(1);
@@ -101,9 +104,12 @@ public class Main extends Object {
 		System.out.println("/************************/\n");
 	}
 
+
 	private static void returnCount(Collection<Pastry> coll, Pastry[] pastries, int[] pastryCounts) {
 		for (int i = 0; i < pastries.length; i++) {
 			pastryCounts[i] += coll.contains(pastries[i]) ? 1 : 0;
 		}
 	}
+
+    
 }
