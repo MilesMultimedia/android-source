@@ -2,6 +2,8 @@ package com.bloc.generics;
 
 import com.bloc.generics.things.*;
 
+import java.lang.Object;
+
 public class Main extends Object {
 
 	public static void main(String [] args) {
@@ -12,6 +14,16 @@ public class Main extends Object {
  		 *	ASSIGNMENT:
  		 *	Place several Toy objects into toyBox
 		/************************************************/
+
+        toyBox.addToy(new Toy<Object>("Generic Toy"));
+
+/*
+        toyBox.addToy(new ActionFigure<Toy>());
+        toyBox.addToy(new ActionFigure<Toy>("Batman"));
+        toyBox.addToy(new ActionFigure<Object>("Batman"));
+        toyBox.addToy(new ActionFigure((Toy) <Object>("Batman")));
+        toyBox.addToy(new ActionFigure((Object) <Toy>("Batman")));
+*/
 
 		assert toyBox.getToyCount() > 0 : "Let's get some toys in that box!";
 		System.out.println("Inside your toybox you've got:");
